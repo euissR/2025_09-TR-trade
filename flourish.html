@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="flourish.css">
 </head>
 
-
-
 <body>
 
     <p>
@@ -693,6 +691,25 @@
             leftPadding
         );
         document.documentElement.style.setProperty("--main-left-margin", leftMargin);
+    </script>
+
+    <!-- dynamic iframe height -->
+    <script>
+        // Send height to parent
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({
+                type: 'iframeHeight',
+                height: height
+            }, '*'); // Replace '*' with specific origin for security
+        }
+
+        // Send on load and when content changes
+        window.onload = sendHeight;
+
+        // Optional: observe for content changes
+        const observer = new ResizeObserver(sendHeight);
+        observer.observe(document.body);
     </script>
 
 </body>
