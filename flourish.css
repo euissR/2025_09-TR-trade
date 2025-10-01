@@ -1,0 +1,169 @@
+        :root {
+            --fluid-screen: 100vw;
+            --h2-font-size: calc(34 / 16 * 1rem + (42 - 34) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --h2-line-height: calc(44 / 16 * 1rem + (55 - 44) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --h2-margin: calc(44 / 16 * 1rem + (55 - 44) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --body-font-size: calc(20 / 16 * 1rem + (20 - 20) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --body-line-height: calc(30 / 16 * 1rem + (30 - 30) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --body-margin: calc(30 / 16 * 1rem + (30 - 30) * calc((var(--fluid-screen) - 360 / 16 * 1rem) / (1920 - 360)));
+            --tx-color: #515050;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            /* font-family: "PT Sans", sans-serif; */
+        }
+
+        /* from EUISS website */
+        h2 {
+            font-family: "Merriweather", serif;
+            font-weight: 700;
+            font-size: var(--h2-font-size);
+            line-height: var(--h2-line-height);
+            letter-spacing: -0.02em;
+            margin-top: var(--h2-margin);
+            margin-bottom: var(--h2-margin);
+        }
+
+        p,
+        a {
+            font-family: "PT Sans", sans-serif;
+            font-weight: 400;
+            font-size: var(--body-font-size);
+            line-height: var(--body-line-height);
+            letter-spacing: 0em;
+            margin-top: var(--body-margin);
+            margin-bottom: var(--body-margin);
+            color: var(--tx-color, #959595);
+        }
+
+        /* scrolly specific */
+        article {
+            position: relative;
+        }
+
+        #graphic1,
+        #graphic2 {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            z-index: 11;
+            text-align: left !important;
+        }
+
+        /* FLOURISH */
+        .flourish-embed {
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* last graph (after scrolly) */
+        #static {
+            position: static !important;
+        }
+
+        .fl-scrolly-step {
+            width: 80% !important;
+            line-height: 1.6em !important;
+            font-size: 16px !important;
+            z-index: 20;
+        }
+
+        .flourish-credit {
+            display: none;
+        }
+
+        /* FLOURISH DIV NON-SCROLL */
+        .flourish-embed-div {
+            width: 100%;
+        }
+
+        /* half-width embedded chart - non-scroll */
+        .flourish-embed-iframe-half {
+            width: 50% !important;
+            /* left: 50%;
+    position: absolute !important; */
+            float: right;
+        }
+
+
+        /* SECTIONS */
+        .active,
+        .section {
+            color: #1d1d1b;
+            height: auto;
+            opacity: 0.5;
+            font-size: 15px;
+            padding: 0.7vw 1.5vw 0.7vw 0vw;
+            line-height: 25px;
+            border-radius: 0;
+            pointer-events: all !important;
+            background: rgb(255, 255, 255);
+            margin-top: auto;
+        }
+
+        .active {
+            opacity: 1;
+        }
+
+        .section:last-child {
+            margin-bottom: 0vh;
+        }
+
+        .space {
+            margin: 0;
+            height: 10vh;
+            bottom: 0vh;
+            width: 0;
+            pointer-events: none;
+        }
+
+        .col {
+            position: relative;
+            width: 100%;
+        }
+
+        .chart-title {
+            font-family: "PT Sans Narrow", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            color: #1d1d1b;
+            font-size: 16px;
+            text-align: left;
+            font-family: "PT Sans", sans-serif;
+            font-weight: 700;
+        }
+
+        .hl1,
+        .hl2,
+        .hl3,
+        .hl4 {
+            color: #fff;
+            font-weight: 700;
+            margin: 0 -0.15em;
+            padding: 0 0.15em;
+        }
+
+        .hl1 {
+            background-color: #1d1d1b;
+        }
+
+        .hl2 {
+            background-color: #df3144;
+        }
+
+        .hl3 {
+            background-color: #33163a;
+        }
