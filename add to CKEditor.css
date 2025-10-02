@@ -1,0 +1,9 @@
+/* add to CKEditor */
+
+body:not(.path-frontpage) main .layout-content {
+        padding: 0 !important;
+    }
+
+body:not(.path-frontpage) main .layout-content {
+        padding: 0 !important;
+}
