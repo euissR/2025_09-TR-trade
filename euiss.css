@@ -510,7 +510,8 @@
     --wt-icon--warning: <svg ><path fill-rule="evenodd" d="M44.73 44.13 34.59 25.35 24.51 6.66c-.24-.42-.84-.42-1.05 0L13.38 25.35 3.24 44.13c-.21.39.06.87.54.87h40.41c.45 0 .75-.48.54-.87M22.5 17.97h3V32.1h-3zM24 38.94a2.01 2.01 0 0 1 0-4.02c1.11 0 2.04.9 2.04 2.01s-.9 2.01-2.04 2.01" clip-rule="evenodd"/></svg>;
     --drupal-displace-offset-left: 240px;
     --drupal-displace-offset-top: 39px;
-    scrollbar-color: #12596e #dbdbdb;
+    scrollbar-color: #ffffff00 #ffffff00; /* to hide scrollbar */
+    /* scrollbar-color: #12596e #dbdbdb; */
     -webkit-font-smoothing: antialiased;
     --admin-menu-height: 79px;
     box-sizing: border-box;
