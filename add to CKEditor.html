@@ -1,0 +1,69 @@
+<!-- with script to detect whether iframe is snapped - prevents scrolling prior to snapping -->
+<style>
+        body:not(.path-frontpage) main .layout-content {
+                padding: 0 !important;
+        }
+
+        body:not(.path-frontpage) main .layout-content {
+                padding: 0 !important;
+        }
+
+        /* Apply to the scroll container (usually html or body) */
+        html {
+                scroll-snap-type: y proximity;
+        }
+
+        /* Target the iframe */
+        iframe {
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+                pointer-events: none;
+                /* Disable interaction by default */
+        }
+
+        iframe.is-snapped {
+                pointer-events: auto;
+                /* Enable when snapped */
+        }
+</style>
+
+<script>
+        const iframe = document.querySelector('iframe');
+
+        const observer = new IntersectionObserver(
+                (entries) => {
+                        entries.forEach(entry => {
+                                // When iframe is fully in view (snapped)
+                                if (entry.intersectionRatio >= 0.9) {
+                                        iframe.classList.add('is-snapped');
+                                } else {
+                                        iframe.classList.remove('is-snapped');
+                                }
+                        });
+                },
+                { threshold: [0.9] } // Trigger when 90% visible
+        );
+
+        observer.observe(iframe);       
+</script>
+
+<!-- ########################################## simple snapping ########################################## -->
+<style>
+        body:not(.path-frontpage) main .layout-content {
+                padding: 0 !important;
+        }
+
+        body:not(.path-frontpage) main .layout-content {
+                padding: 0 !important;
+        }
+
+        /* Apply to the scroll container (usually html or body) */
+        html {
+                scroll-snap-type: y proximity;
+        }
+
+        /* Target the iframe */
+        iframe {
+                scroll-snap-align: start;
+        }
+</style>
