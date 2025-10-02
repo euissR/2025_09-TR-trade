@@ -54,6 +54,13 @@
             color: var(--tx-color, #959595);
         }
 
+        @media (max-width: 768px) {
+            p, a {
+                font-size: calc(var(--body-s-font-size) * 1.072386058981233);
+                line-height: calc(var(--body-s-line-height) * 1.4);
+            }
+        }
+
         /* scrolly specific */
         article {
             position: relative;
