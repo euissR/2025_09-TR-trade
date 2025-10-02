@@ -12,13 +12,24 @@
         body {
             margin: 0;
             padding: 0 calc(var(--spacing-xl) + var(--spacing-m));
-            /* padding-left: 20vw;
-            padding-right: 20vw; */
             height: auto;
             overflow-x: hidden;
             overflow-y: auto;
-            /* font-family: "PT Sans", sans-serif; */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
         }
+
+        body::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Opera */
+        }
+
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0 var(--spacing-m);
+            }
+        }
+
 
         /* from EUISS website */
         h2 {

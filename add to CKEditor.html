@@ -1,4 +1,11 @@
 <!-- with script to detect whether iframe is snapped - prevents scrolling prior to snapping -->
+<p>
+        <iframe style="border-style:none;bottom:0;height:100vh;left:0;margin:0;overflow:hidden;position:relative;right:0;top:0;width:100%;z-index:99;"
+                src="https://euissr.github.io/2025_09-TR-trade/flourish.html">
+                Your browser doesn't support iframes
+        </iframe>
+</p>
+<!-- with script to detect whether iframe is snapped - prevents scrolling prior to snapping -->
 <style>
         body:not(.path-frontpage) main .layout-content {
                 padding: 0 !important;
@@ -26,10 +33,8 @@
                 /* Enable when snapped */
         }
 </style>
-
 <script>
         const iframe = document.querySelector('iframe');
-
         const observer = new IntersectionObserver(
                 (entries) => {
                         entries.forEach(entry => {
@@ -43,7 +48,6 @@
                 },
                 { threshold: [0.9] } // Trigger when 90% visible
         );
-
         observer.observe(iframe);       
 </script>
 
