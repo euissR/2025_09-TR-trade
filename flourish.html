@@ -712,38 +712,66 @@
     </script>
 
     <script>
-        // Get the main element
-        const mainElement = document.querySelector("main.row.l-main");
-        // Get the computed styles of the main element
-        const computedStyle = getComputedStyle(mainElement);
-        // Extract the left padding and margin
-        const leftPadding = computedStyle.paddingLeft;
-        const leftMargin = computedStyle.marginLeft;
-        // Set these values as CSS variables on the document root
-        document.documentElement.style.setProperty(
-            "--main-left-padding",
-            leftPadding
-        );
-        document.documentElement.style.setProperty("--main-left-margin", leftMargin);
-    </script>
+        (function () {
+            let isSnapped = false;
 
-    <!-- dynamic iframe height -->
-    <script>
-        // Send height to parent
-        function sendHeight() {
-            const height = document.body.scrollHeight;
-            window.parent.postMessage({
-                type: 'iframeHeight',
-                height: height
-            }, '*'); // Replace '*' with specific origin for security
-        }
+            function sendScrollData() {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const clientHeight = document.documentElement.clientHeight;
 
-        // Send on load and when content changes
-        window.onload = sendHeight;
+                const atTop = scrollTop <= 5;
+                const atBottom = scrollTop + clientHeight >= scrollHeight - 5;
 
-        // Optional: observe for content changes
-        const observer = new ResizeObserver(sendHeight);
-        observer.observe(document.body);
+                window.parent.postMessage({
+                    type: 'scrollData',
+                    scrollTop: scrollTop,
+                    scrollHeight: scrollHeight,
+                    clientHeight: clientHeight,
+                    atTop: atTop,
+                    atBottom: atBottom
+                }, '*');
+            }
+
+            // Send scroll data on scroll
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                sendScrollData();
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(sendScrollData, 50);
+            }, { passive: true });
+
+            // Signal ready and send initial data when loaded
+            window.addEventListener('load', () => {
+                window.parent.postMessage({ type: 'iframeReady' }, '*');
+                setTimeout(sendScrollData, 100);
+            });
+
+            // Also send on resize
+            window.addEventListener('resize', sendScrollData);
+
+            // Listen for snap/unsnap events from parent
+            window.addEventListener('message', (event) => {
+                if (event.data.type === 'snapped') {
+                    isSnapped = true;
+                    document.body.classList.add('is-snapped');
+                } else if (event.data.type === 'unsnapped') {
+                    isSnapped = false;
+                    document.body.classList.remove('is-snapped');
+                }
+            });
+
+            // If content changes dynamically, send updates
+            const observer = new MutationObserver(() => {
+                sendScrollData();
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true
+            });
+        })();
     </script>
 
 </body>

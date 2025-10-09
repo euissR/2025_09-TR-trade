@@ -101,17 +101,14 @@
         }
 
         /* FLOURISH DIV NON-SCROLL */
-        .flourish-embed-div {
-            width: 100%;
-        }
 
         /* half-width embedded chart - non-scroll */
-        .flourish-embed-iframe-half {
-            width: 50% !important;
+        .half-right-float {
             float: right;
+            width: 50%;
+            margin-left: 1vw !important;
         }
-
-
+        
         /* SECTIONS */
         .active,
         .section {
